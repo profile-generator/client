@@ -1,4 +1,4 @@
-let baseURL = "http://localhost:3000"
+var baseURL = "http://localhost:3000"
 
 
 const app = new Vue({
@@ -18,11 +18,89 @@ const app = new Vue({
             image: null
         },
         isLogin: false,
-        isRegis: false
+        isRegis: false,
+        isLoggedIn: true,
+        users: [],
+        currentUser: {},
+
+        afterLogin: {
+            homePage: true,
+        }
+
     },
-    // created:()=>{
-    // },
+    created() {
+        if (localStorage.token) {
+            this.isLoggedIn = true;
+            this.getUser();
+            axios({
+                method: "GET",
+                url: `${baseURL}/users/`,
+                headers: { token: localStorage.token },
+            })
+                .then(({ data }) => {
+                    console.log(data);
+                    this.users = data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        } else {
+            this.isLoggedIn = false;
+        }
+    },
+
+    watch: {
+        users: function (newUsers, oldUsers) {
+            this.users.forEach((user) => {
+                // user.birthdate = user.birthdate.toDateString()
+                // console.log(typeof user.birthdate)
+                const date = new Date(user.birthdate).toDateString().slice(3);
+                user.birthdate = date;
+            })
+        }
+    },
     methods: {
+        toHomePage() {
+            this.afterLogin.homePage = true;
+        },
+        toProfilePage() {
+            this.afterLogin.homePage = false;
+        },
+        like(id){
+            this.currentUser.likes.push(id)
+        },
+        dislike(id){
+            this.currentUser.likes = this.currentUser.likes.filter(userId => userId !== id)
+        },
+        getUser() {
+            axios({
+                method: "GET",
+                url: `${baseURL}/users/${localStorage.userId}`,
+                headers: { token: localStorage.token },
+              })
+              .then(({ data }) => {
+                console.log(data);
+                this.currentUser = data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        getUsers() {
+            axios({
+                method: "GET",
+                url: `${baseURL}/users/`,
+                headers: { token: localStorage.token },
+            })
+                .then(({ data }) => {
+                    console.log(data);
+                    this.users = data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+
         register() {
 
             this.isLoading = true;
@@ -54,11 +132,11 @@ const app = new Vue({
             //         this.isLoading = false;
             //     });
             axios({
-                    method: "POST",
-                    url: `${baseURL}/register`,
-                    data: params
-                })
-                .then(response => {
+                method: "POST",
+                url: `${baseURL}/register`,
+                data: params
+            })
+                .then(({ data }) => {
                     this.User = {
                         id: "",
                         name: "",
@@ -72,21 +150,24 @@ const app = new Vue({
                         hobbies: [],
                         image: null
                     }
-                    alert("Succes register Data")
+                    console.log({ data });
+
+                    this.isRegis = false;
+                    this.getUsers();
                 })
                 .catch(err => {
-                    alert("failed register data")
+                    console.log(err);
                 })
         },
         login(email) {
             axios({
-                    method: "GET",
-                    url: `${baseURL}/Users?email=${email}`,
-                    data: {
-                        email: this.User.email,
-                        password: this.User.password
-                    }
-                })
+                method: "POST",
+                url: `${baseURL}/signin`,
+                data: {
+                    email: this.User.email,
+                    password: this.User.password
+                }
+            })
                 .then(response => {
                     this.User = {
                         id: "",
@@ -102,15 +183,32 @@ const app = new Vue({
                         image: null
                     }
                     if (response.data.length == 0) {
-                        alert('not found')
                     } else {
-                        alert('Success login data')
+                        console.log(response.data)
+                        this.isLoggedIn = true;
+                        localStorage.token = response.data.token;
+                        localStorage.userId = response.data.userId;
+                        this.getUsers();
+
+                        return axios({
+                            method: "GET",
+                            url: `${baseURL}/users/${response.data.userId}`,
+                            headers: { token: localStorage.token },
+                        })
                     }
+                })
+                .then(({ data }) => {
+                    this.currentUser = data;
+                    console.log(this.currentUser);
                 })
                 .catch(err => {
                     console.log(err)
-                    alert("failed login data")
                 })
+        },
+
+        signOut() {
+            localStorage.clear();
+            this.isLoggedIn = false;
         }
     }
 })
