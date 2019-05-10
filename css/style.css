@@ -3,7 +3,8 @@
     padding: 0;
 }
 body{
-    background-image: url("https://www.unitypixel.com/files/wallpapers/4k-Abstract-Background-Wallpaper-10002.jpg");
+    background-image: url("../img/home-page-background.jpg");
     background-attachment: fixed;
+    background-size: cover;
     width: 100%x;
 }

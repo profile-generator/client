@@ -1,0 +1,37 @@
+* {
+  /* background-color: red; */
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#container-profile,
+#card-minder {
+  border: 1px solid rgb(214, 214, 214); 
+  border-radius: 10px; 
+  font-size: 1.3rem;
+  color: rgb(38, 2, 43);
+  background-color: rgb(254, 248, 255);
+  box-shadow: 0 0 0 0.2rem rgb(252, 234, 255, 0.25);
+}
+#container-profile {
+  
+  /* box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); */
+  
+  max-width: 55rem; 
+  padding: 1rem;
+}
+
+#card-minder {
+  
+  overflow:hidden;
+  max-width: 25rem; 
+  height: auto; 
+}

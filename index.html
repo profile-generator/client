@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
     <title>Profile Generator</title>
 </head>
+
 <body>
     <div id="app">
         <!-- <div>
@@ -24,15 +27,22 @@
             <p>{{User.hobbies}}</p>
             <p>{{User.image}}</p>
         </div> -->
-        
+
         <div id="home" v-if="!isLogin && !isRegis">
             <div class="hero is-large">
                 <div class="hero-body">
                     <div class="container has-text-centered">
-                        <h1 class="title">Any Title</h1>
-                        <h2 class="subtitle">Some Descriptions</h2>
+                        <div class="columns">
+                            <div class="column flex-center" style="padding-bottom: 0;">
+                                <img src="./img/minder-logo.png" alt="Page Logo"
+                                    style="height: 100px; margin-right: -1rem;">
+                                <img src="./img/minder-logo-text-home-page.png" alt="Page Logo">
+                            </div>
+                        </div>
+
                         <b-field class="field is-grouped" style="justify-content: center;">
-                            <b-button class="button is-primary" size="is-large" @click="isLogin = !isLogin" style="margin-right:20px;">
+                            <b-button class="button is-primary" inverted size="is-large" @click="isLogin = !isLogin"
+                                style="margin-right:20px;">
                                 Login
                             </b-button>
                             <b-button class="button is-primary" size="is-large" @click="isRegis = !isRegis">
@@ -44,29 +54,30 @@
             </div>
         </div>
         <div style="height: 100vh; padding-top: 200px" v-if="isLogin">
-            <div id="form-login" class="column is-half is-offset-one-quarter card" >
+            <div id="form-login" class="column is-half is-offset-one-quarter card">
                 <b-field custom-class="is-large" label="Login"></b-field>
                 <b-field label="Email">
                     <b-input placeholder="Email" type="email" icon="email" rounded v-model="User.email"></b-input>
                 </b-field>
                 <b-field label="Password">
-                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password"></b-input>
+                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
+                    </b-input>
                 </b-field>
                 <b-field class="field is-grouped is-grouped-centered">
-                        <p class="control">
-                            <button class="button is-primary" @click.prevent="login(User.email)">
-                                Login
-                            </button>
-                            <button class="button is-primary" @click="isLogin = !isLogin">
-                                Cancel
-                            </button>
-                        </p>
+                    <p class="control">
+                        <button class="button is-primary" @click.prevent="login(User.email)">
+                            Login
+                        </button>
+                        <button class="button is-primary" @click="isLogin = !isLogin">
+                            Cancel
+                        </button>
+                    </p>
                 </b-field>
             </div>
         </div>
         <div style="padding-top: 5rem; padding-bottom: 5rem" v-if="isRegis">
-            <div id="form-register" class="column is-half is-offset-one-quarter card" >
-            <b-field custom-class="is-large" label="Register"></b-field>
+            <div id="form-register" class="column is-half is-offset-one-quarter card">
+                <b-field custom-class="is-large" label="Register"></b-field>
                 <b-field label="Full Name">
                     <b-input placeholder="Full Name" rounded v-model="User.name"></b-input>
                 </b-field>
@@ -74,7 +85,8 @@
                     <b-input placeholder="Email" type="email" rounded v-model="User.email"></b-input>
                 </b-field>
                 <b-field label="Password">
-                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password"></b-input>
+                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
+                    </b-input>
                 </b-field>
                 <b-field label="Age">
                     <b-input placeholder="Age" type="number" rounded v-model="User.age"></b-input>
@@ -129,4 +141,5 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
