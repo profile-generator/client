@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <title>Profile Generator</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <div>
+            <p>{{User.name}}</p>
+            <p>{{User.email}}</p>
+            <p>{{User.password}}</p>
+            <p>{{User.age}}</p>
+            <p>{{User.gender}}</p>
+            <p>{{User.location}}</p>
+            <p>{{User.phoneNumber}}</p>
+            <p>{{User.work}}</p>
+            <p>{{User.hobbies}}</p>
+            <p>{{User.image}}</p>
+        </div> -->
+        
+        <div id="home" v-if="!isLogin && !isRegis">
+            <div class="hero is-large">
+                <div class="hero-body">
+                    <div class="container has-text-centered">
+                        <h1 class="title">Any Title</h1>
+                        <h2 class="subtitle">Some Descriptions</h2>
+                        <b-field class="field is-grouped" style="justify-content: center;">
+                            <b-button class="button is-primary" size="is-large" @click="isLogin = !isLogin" style="margin-right:20px;">
+                                Login
+                            </b-button>
+                            <b-button class="button is-primary" size="is-large" @click="isRegis = !isRegis">
+                                Register
+                            </b-button>
+                        </b-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 100vh; padding-top: 200px" v-if="isLogin">
+            <div id="form-login" class="column is-half is-offset-one-quarter card" >
+                <b-field custom-class="is-large" label="Login"></b-field>
+                <b-field label="Email">
+                    <b-input placeholder="Email" type="email" icon="email" rounded v-model="User.email"></b-input>
+                </b-field>
+                <b-field label="Password">
+                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password"></b-input>
+                </b-field>
+                <b-field class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <button class="button is-primary" @click.prevent="login(User.email)">
+                                Login
+                            </button>
+                            <button class="button is-primary" @click="isLogin = !isLogin">
+                                Cancel
+                            </button>
+                        </p>
+                </b-field>
+            </div>
+        </div>
+        <div style="padding-top: 5rem; padding-bottom: 5rem" v-if="isRegis">
+            <div id="form-register" class="column is-half is-offset-one-quarter card" >
+            <b-field custom-class="is-large" label="Register"></b-field>
+                <b-field label="Full Name">
+                    <b-input placeholder="Full Name" rounded v-model="User.name"></b-input>
+                </b-field>
+                <b-field label="Email">
+                    <b-input placeholder="Email" type="email" rounded v-model="User.email"></b-input>
+                </b-field>
+                <b-field label="Password">
+                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password"></b-input>
+                </b-field>
+                <b-field label="Age">
+                    <b-input placeholder="Age" type="number" rounded v-model="User.age"></b-input>
+                </b-field>
+                <b-field label="Gender">
+                    <b-select placeholder="Gender" rounded expanded v-model="User.gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </b-select>
+                </b-field>
+                <b-field label="Location">
+                    <b-input placeholder="Location" rounded v-model="User.location"></b-input>
+                </b-field>
+                <b-field label="Phone Number">
+                    <b-input placeholder="Phone Number" type="phone" rounded v-model="User.phoneNumber"></b-input>
+                </b-field>
+                <b-field label="Work">
+                    <b-input placeholder="Work" rounded v-model="User.work"></b-input>
+                </b-field>
+                <b-field label="Hobbies">
+                    <b-taginput placeholder="Hobbies" v-model="User.hobbies">
+                    </b-taginput>
+                </b-field>
+                <b-field label="Upload Profile Picture"></b-field>
+                <b-field class="file">
+                    <b-upload v-model="User.image">
+                        <a class="button is-primary">
+                            <b-icon icon="upload"></b-icon>
+                            <span>Click to upload</span>
+                        </a>
+                    </b-upload>
+                    <span class="file-name" v-if="User.image">
+                        {{ User.image.name }}
+                    </span>
+                </b-field>
+                <b-field class="field is-grouped is-grouped-centered">
+                    <p class="control">
+                        <button class="button is-primary" @click.prevent="register()">
+                            Register
+                        </button>
+                        <button class="button is-primary" @click="isRegis = !isRegis">
+                            Cancel
+                        </button>
+                    </p>
+                </b-field>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
