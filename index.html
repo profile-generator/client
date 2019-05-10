@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- meta facebook -->
-    <meta property="og:url"           content="https://www.google.com" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="HAHAHAHA" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+    <meta property="og:url" content="https://www.google.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HAHAHAHA" />
+    <meta property="og:description" content="Your description" />
+    <meta property="og:image" content="https://www.your-domain.com/path/image.jpg" />
 
     <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
@@ -24,13 +24,13 @@
 <body>
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
     <div id="app">
         <!-- <div>
@@ -47,121 +47,209 @@
         </div> -->
 
         <!-- facebook button code -->
-        <div class="fb-share-button" 
+        <!-- <div class="fb-share-button" 
             data-href="https://www.facebook.com/khody.febrianthomas?ref=bookmarks" 
             data-layout="button_count">
-        </div>
+        </div> -->
 
-        <div id="home" v-if="!isLogin && !isRegis">
-            <div class="hero is-large">
-                <div class="hero-body">
-                    <div class="container has-text-centered">
-                        <div class="columns">
-                            <div class="column flex-center" style="padding-bottom: 0;">
-                                <img src="./img/minder-logo.png" alt="Page Logo" style="height: 100px; margin-right: -1rem;">
-                                <img src="./img/minder-logo-text-home-page.png" alt="Page Logo">
+        <div id="before-login" v-if="!isLoggedIn">
+
+
+
+            <div id="home" v-if="!isLogin && !isRegis">
+                <div class="hero is-large">
+                    <div class="hero-body">
+                        <div class="container has-text-centered">
+                            <div class="columns">
+                                <div class="column flex-center" style="padding-bottom: 0;">
+                                    <img src="./img/minder-logo.png" alt="Page Logo"
+                                        style="height: 100px; margin-right: -1rem;">
+                                    <img src="./img/minder-logo-text-home-page.png" alt="Page Logo">
+                                </div>
                             </div>
-                        </div>
 
-                        <b-field class="field is-grouped" style="justify-content: center;">
-                            <b-button class="button is-primary" inverted size="is-large" @click="isLogin = !isLogin" style="margin-right:20px;">
-                                Login
-                            </b-button>
-                            <b-button class="button is-primary" size="is-large" @click="isRegis = !isRegis">
-                                Register
-                            </b-button>
-                        </b-field>
+                            <b-field class="field is-grouped" style="justify-content: center;">
+                                <b-button class="button is-primary" inverted size="is-large" @click="isLogin = !isLogin"
+                                    style="margin-right:20px;">
+                                    Login
+                                </b-button>
+                                <b-button class="button is-primary" size="is-large" @click="isRegis = !isRegis">
+                                    Register
+                                </b-button>
+                            </b-field>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div style="height: 100vh; padding-top: 200px" v-if="isLogin">
-            <div id="form-login" class="column is-half is-offset-one-quarter card">
-                <b-field custom-class="is-large" label="Login"></b-field>
-                <b-field label="Email">
-                    <b-input placeholder="Email" type="email" icon="email" rounded v-model="User.email"></b-input>
-                </b-field>
-                <b-field label="Password">
-                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
-                    </b-input>
-                </b-field>
-                <b-field class="field is-grouped is-grouped-centered">
-                    <p class="control">
-                        <button class="button is-primary" @click.prevent="login(User.email)">
+            <div style="height: 100vh; padding-top: 200px" v-if="isLogin">
+                <div id="form-login" class="column is-half is-offset-one-quarter card">
+                    <b-field custom-class="is-large" label="Login"></b-field>
+                    <b-field label="Email">
+                        <b-input placeholder="Email" type="email" icon="email" rounded v-model="User.email"></b-input>
+                    </b-field>
+                    <b-field label="Password">
+                        <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
+                        </b-input>
+                    </b-field>
+                    <b-field class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <button class="button is-primary" @click.prevent="login(User.email)">
                                 Login
                             </button>
-                        <button class="button is-primary" @click="isLogin = !isLogin">
+                            <button class="button is-primary" @click="isLogin = !isLogin">
                                 Cancel
                             </button>
-                    </p>
-                </b-field>
+                        </p>
+                    </b-field>
+                </div>
+            </div>
+            <div style="padding-top: 5rem; padding-bottom: 5rem" v-if="isRegis">
+                <div id="form-register" class="column is-half is-offset-one-quarter card">
+                    <b-field custom-class="is-large" label="Register"></b-field>
+                    <b-field label="Full Name">
+                        <b-input placeholder="Full Name" rounded v-model="User.name"></b-input>
+                    </b-field>
+                    <b-field label="Email">
+                        <b-input placeholder="Email" type="email" rounded v-model="User.email"></b-input>
+                    </b-field>
+                    <b-field label="Password">
+                        <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
+                        </b-input>
+                    </b-field>
+                    <b-field label="Birthdate">
+                        <b-datepicker placeholder="Click to select..." icon="calendar-today" v-model="User.age" rounded>
+                        </b-datepicker>
+                    </b-field>
+                    <b-field label="Gender">
+                        <b-select placeholder="Gender" rounded expanded v-model="User.gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </b-select>
+                    </b-field>
+                    <b-field label="Location">
+                        <b-input placeholder="Location" rounded v-model="User.location"></b-input>
+                    </b-field>
+                    <b-field label="Phone Number">
+                        <b-input placeholder="Phone Number" type="phone" rounded v-model="User.phoneNumber"></b-input>
+                    </b-field>
+                    <b-field label="Work">
+                        <b-input placeholder="Work" rounded v-model="User.work"></b-input>
+                    </b-field>
+                    <b-field label="Hobbies">
+                        <b-taginput placeholder="Hobbies" v-model="User.hobbies">
+                        </b-taginput>
+                    </b-field>
+                    <b-field label="Upload Profile Picture"></b-field>
+                    <b-field class="file">
+                        <b-upload v-model="User.image">
+                            <a class="button is-primary">
+                                <b-icon icon="upload"></b-icon>
+                                <span>Click to upload</span>
+                            </a>
+                        </b-upload>
+                        <span class="file-name" v-if="User.image">
+                            {{ User.image.name }}
+                        </span>
+                    </b-field>
+                    <b-field class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <button class="button is-primary" @click.prevent="register()">
+                                Register
+                            </button>
+                            <button class="button is-primary" @click="isRegis = !isRegis">
+                                Cancel
+                            </button>
+                        </p>
+                    </b-field>
+                </div>
             </div>
         </div>
-        <div style="padding-top: 5rem; padding-bottom: 5rem" v-if="isRegis">
-            <div id="form-register" class="column is-half is-offset-one-quarter card">
-                <b-field custom-class="is-large" label="Register"></b-field>
-                <b-field label="Full Name">
-                    <b-input placeholder="Full Name" rounded v-model="User.name"></b-input>
-                </b-field>
-                <b-field label="Email">
-                    <b-input placeholder="Email" type="email" rounded v-model="User.email"></b-input>
-                </b-field>
-                <b-field label="Password">
-                    <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
-                    </b-input>
-                </b-field>
-                <b-field label="Birthdate">
-                    <b-datepicker placeholder="Click to select..." icon="calendar-today" v-model="User.age" rounded>
-                    </b-datepicker>
-                </b-field>
-                <b-field label="Gender">
-                    <b-select placeholder="Gender" rounded expanded v-model="User.gender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </b-select>
-                </b-field>
-                <b-field label="Location">
-                    <b-input placeholder="Location" rounded v-model="User.location"></b-input>
-                </b-field>
-                <b-field label="Phone Number">
-                    <b-input placeholder="Phone Number" type="phone" rounded v-model="User.phoneNumber"></b-input>
-                </b-field>
-                <b-field label="Work">
-                    <b-input placeholder="Work" rounded v-model="User.work"></b-input>
-                </b-field>
-                <b-field label="Hobbies">
-                    <b-taginput placeholder="Hobbies" v-model="User.hobbies">
-                    </b-taginput>
-                </b-field>
-                <b-field label="Upload Profile Picture"></b-field>
-                <b-field class="file">
-                    <b-upload v-model="User.image">
-                        <a class="button is-primary">
-                            <b-icon icon="upload"></b-icon>
-                            <span>Click to upload</span>
+
+
+
+        <div id="after-login" v-if="isLoggedIn">
+
+
+
+
+            <nav class="navbar" role="navigation" aria-label="main navigation"
+                style="background-color: rgb(255, 246, 252);">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="#">
+                        <img src="./img/minder-logo.png" width="50" height="50">
+                        <img src="./img/minder-logo-text.png" width="100" height="28">
+                    </a>
+
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" @click="toHomePage()">
+                            Home
                         </a>
-                    </b-upload>
-                    <span class="file-name" v-if="User.image">
-                        {{ User.image.name }}
-                    </span>
-                </b-field>
-                <b-field class="field is-grouped is-grouped-centered">
-                    <p class="control">
-                        <button class="button is-primary" @click.prevent="register()">
-                            Register
-                        </button>
-                        <button class="button is-primary" @click="isRegis = !isRegis">
-                            Cancel
-                        </button>
-                    </p>
-                </b-field>
+
+                        <a class="navbar-item" @click="toProfilePage()">
+                            Profile
+                        </a>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <b-button type="is-primary" outlined @click.prevent="signOut()">Sign out</b-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div id="home-page" style="background-color: rgb(250, 255, 209);" v-if="afterLogin.homePage">
+
+
+                <div class="columns is-multiline" style="padding: 5rem;">
+
+
+
+                    <div class="column is-one-third" style="padding: 5rem;" v-for="user in users">
+                        <user-card :user="user" :currentuser="currentUser" @like="like" @dislike="dislike"></user-card>
+                    </div>
+                </div>
+
+
+
+
             </div>
+
+
+            <div id="profile-page" v-if="!afterLogin.homePage" style="background-image: none !important;">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column">
+                            <h1>TEST</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
+
+
     </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./components/user-card.js"></script>
     <script src="./js/main.js"></script>
 </body>
 
