@@ -5,15 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- meta facebook -->
+    <meta property="og:url"           content="https://www.google.com" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="HAHAHAHA" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+
     <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./css/main.css" type="text/css">
-    <title>Profile Generator</title>
+    <link rel="canonical" href="/web/tweet-button">
+    <title>Minder</title>
 </head>
 
 <body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <div id="app">
         <!-- <div>
             <p>{{User.name}}</p>
@@ -27,6 +45,12 @@
             <p>{{User.hobbies}}</p>
             <p>{{User.image}}</p>
         </div> -->
+
+        <!-- facebook button code -->
+        <div class="fb-share-button" 
+            data-href="https://www.facebook.com/khody.febrianthomas?ref=bookmarks" 
+            data-layout="button_count">
+        </div>
 
         <div id="home" v-if="!isLogin && !isRegis">
             <div class="hero is-large">
