@@ -34,15 +34,13 @@
                     <div class="container has-text-centered">
                         <div class="columns">
                             <div class="column flex-center" style="padding-bottom: 0;">
-                                <img src="./img/minder-logo.png" alt="Page Logo"
-                                    style="height: 100px; margin-right: -1rem;">
+                                <img src="./img/minder-logo.png" alt="Page Logo" style="height: 100px; margin-right: -1rem;">
                                 <img src="./img/minder-logo-text-home-page.png" alt="Page Logo">
                             </div>
                         </div>
 
                         <b-field class="field is-grouped" style="justify-content: center;">
-                            <b-button class="button is-primary" inverted size="is-large" @click="isLogin = !isLogin"
-                                style="margin-right:20px;">
+                            <b-button class="button is-primary" inverted size="is-large" @click="isLogin = !isLogin" style="margin-right:20px;">
                                 Login
                             </b-button>
                             <b-button class="button is-primary" size="is-large" @click="isRegis = !isRegis">
@@ -66,11 +64,11 @@
                 <b-field class="field is-grouped is-grouped-centered">
                     <p class="control">
                         <button class="button is-primary" @click.prevent="login(User.email)">
-                            Login
-                        </button>
+                                Login
+                            </button>
                         <button class="button is-primary" @click="isLogin = !isLogin">
-                            Cancel
-                        </button>
+                                Cancel
+                            </button>
                     </p>
                 </b-field>
             </div>
@@ -88,8 +86,9 @@
                     <b-input type="password" placeholder="Password" password-reveal rounded v-model="User.password">
                     </b-input>
                 </b-field>
-                <b-field label="Age">
-                    <b-input placeholder="Age" type="number" rounded v-model="User.age"></b-input>
+                <b-field label="Birthdate">
+                    <b-datepicker placeholder="Click to select..." icon="calendar-today" v-model="User.age" rounded>
+                    </b-datepicker>
                 </b-field>
                 <b-field label="Gender">
                     <b-select placeholder="Gender" rounded expanded v-model="User.gender">
