@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Profile Generator</title>
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+  <!-- Buefy -->
+  <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <div class="columns">
+
+      <div class="column is-half" style="padding: 10rem">
+
+
+        <div class="card" id="card-minder">
+          <div class="card-image">
+            <figure class="image is-1by1">
+              <img src="./img/random-profile-picture.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <div class="card-content-row">
+                <div>
+                  Name:
+                </div>
+                <div style="font-weight: bold;">
+                  Agus
+                </div>
+              </div>
+
+              <div class="card-content-row">
+                <div>
+                  Age:
+                </div>
+                <div style="font-weight: bold;">
+                  35
+                </div>
+              </div>
+
+              <div class="card-content-row">
+                <div>
+                  Occupation:
+                </div>
+                <div style="font-weight: bold;">
+                  Bartender
+                </div>
+              </div>
+
+              <div class="card-content-row">
+                <div>
+                  Gender:
+                </div>
+                <div style="font-weight: bold;">
+                  <i class="fas fa-mars"></i> Male
+                  <i class="fas fa-venus"></i> Female
+                </div>
+              </div>
+
+              <div class="card-content-row">
+                <div>
+                  Location:
+                </div>
+                <div>
+                  Jakarta
+                </div>
+              </div>
+
+              <div class="card-content-row">
+                <div>
+                  Hobbies:
+                </div>
+                <ul style="margin-left: 0; margin-top: 0; list-style: none;" dir="rtl">
+                  <li>Cooking</li>
+                  <li>Dancing</li>
+                  <li>Watching movies</li>
+                  <li>Eating popcorn panjangggg</li>
+                </ul>
+              </div>
+
+              <div>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <div class="content">
+              <b-button type="is-primary" size="is-large" class="is-fullwidth"><i class="fas fa-heart"></i> Like
+              </b-button>
+              <b-button type="is-primary" size="is-large" class="is-fullwidth"><i class="fas fa-check"></i> Liked
+              </b-button>
+            </div>
+          </div>
+
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+              </span>
+            </p>
+            <p class="card-footer-item">
+              <span>
+                Share on <a href="#">Facebook</a>
+              </span>
+            </p>
+          </footer>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="container" id="container-profile">
+
+      <div class="columns">
+        <div class="column flex-center">
+          <img src="./img/minder-logo.png" alt="Page Logo" style="height: 50px; margin-right: -1rem">
+          <img src="./img/minder-logo-text.png" alt="Page Logo" style="height: 50px; margin-right: -1rem">
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-one-third" style="display: flex; justify-content: center;">
+          <img src="./img/random-profile-picture.png" alt="Placeholder image"
+            style="width: 10rem; height: 10rem; border-radius: 50%;">
+        </div>
+        <div class="column">
+          <div class="columns">
+            <div class="column is-one-third">
+              Name:
+            </div>
+            <div class="column" style="font-weight: bold;">
+              Agus
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              Age:
+            </div>
+            <div class="column" style="font-weight: bold;">
+              35
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              Occupation:
+            </div>
+            <div class="column" style="font-weight: bold;">
+              Bartender
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              Gender:
+            </div>
+            <div class="column" style="font-weight: bold;">
+              <i class="fas fa-mars"></i> Male
+              <i class="fas fa-venus"></i> Female
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              Location:
+            </div>
+            <div class="column">
+              Jakarta
+            </div>
+
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              Hobbies:
+            </div>
+
+            <div class="column">
+              <div class="columns" style="display: flex; flex-direction: column;">
+                <div class="column">Cooking</div>
+                <div class="column">Dancing</div>
+                <div class="column">Watching Movies</div>
+                <div class="column">Eating popcorn panjangggggggg</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <!-- Buefy -->
+  <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
